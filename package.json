@@ -6,7 +6,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "prepare": "husky"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.13",
@@ -17,6 +18,13 @@
     "sharp": "^0.34.3"
   },
   "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
     "prettier": "3.8.1"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,astro,css,scss,md,mdx,json,yaml,yml,html}": [
+      "prettier --write"
+    ]
   }
 }
