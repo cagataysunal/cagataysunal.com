@@ -10,7 +10,7 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.6",
+    "@astrojs/check": "^0.9.2",
     "@astrojs/mdx": "^4.3.13",
     "@astrojs/rss": "^4.0.15",
     "@astrojs/sitemap": "^3.7.0",
@@ -20,6 +20,7 @@
     "typescript": "^5.9.3"
   },
   "devDependencies": {
+    "cspell": "^9.6.4",
     "husky": "^9.1.7",
     "lint-staged": "^16.2.7",
     "prettier": "3.8.1"
@@ -27,6 +28,9 @@
   "lint-staged": {
     "*.{js,jsx,ts,tsx,astro,css,scss,md,mdx,json,yaml,yml,html}": [
       "prettier --write"
+    ],
+    "*.{md,mdx,astro,html}": [
+      "cspell --no-progress"
     ]
   }
 }

@@ -1,0 +1,9 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "useGitignore": true,
+  "allowCompoundWords": true,
+  "ignorePaths": ["node_modules", "dist", ".astro"],
+  "ignoreRegExpList": ["/<[^>]*>/g", "/\\{[^}]*\\}/g"],
+  "words": ["Astro", "Flutter", "Kotlin", "DevSecOps", "B2B"]
+}
