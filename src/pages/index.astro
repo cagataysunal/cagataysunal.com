@@ -1,5 +1,10 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+const posts = (await getCollection("blog"))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
 ---
 
 <BaseLayout title="Çağatay Sunal">
@@ -8,20 +13,70 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
   <div class="card">
     <p>
-      <strong>Now</strong>: Building this site deliberately. Content will land
-      soon.
-    </p>
-    <p class="muted">
-      I care about clarity, correctness, and practical engineering.
+      I build reliable backend systems and care about clarity, correctness, and
+      practical engineering. When I'm not coding, I'm tinkering with Linux or
+      exploring how things work under the hood.
     </p>
   </div>
+
+  <p>
+    <a href="https://github.com/cagataysunal">GitHub</a>
+  </p>
 
   <h2>Featured</h2>
-  <div class="card">
-    <p><strong>secure_payroll</strong> — HR/payroll tracking</p>
-    <p class="muted">FastAPI</p>
+  <div class="project-list">
+    <div class="card">
+      <p><strong>secure_payroll</strong> — HR/payroll tracking</p>
+      <p class="muted">FastAPI</p>
+    </div>
+    <div class="card">
+      <p><strong>my_site</strong> — This website</p>
+      <p class="muted">Astro</p>
+    </div>
   </div>
+  <p><a href="/projects">View all →</a></p>
 
-  <h2>Notes</h2>
-  <p class="muted">Content is WIP</p>
+  <h2>Latest</h2>
+  <ul class="post-list">
+    {
+      posts.map((post) => (
+        <li>
+          <a href={`/blog/${post.slug}/`}>
+            <span>{post.data.title}</span>
+            <span class="muted">
+              {post.data.pubDate.toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "short",
+                day: "numeric",
+              })}
+            </span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+  <p><a href="/blog">View all →</a></p>
 </BaseLayout>
+
+<style>
+  .project-list {
+    display: grid;
+    gap: 0.75rem;
+  }
+  .post-list {
+    list-style: none;
+    padding: 0;
+  }
+  .post-list li {
+    margin-bottom: 0.5rem;
+  }
+  .post-list a {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    text-decoration: none;
+  }
+  .post-list a:hover span:first-child {
+    text-decoration: underline;
+  }
+</style>

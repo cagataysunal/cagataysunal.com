@@ -1,8 +1,52 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+
+const posts: CollectionEntry<"blog">[] = (await getCollection("blog")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
 ---
 
 <BaseLayout title="Blog · Çağatay Sunal">
   <h1>Blog</h1>
-  <p class="muted">Coming soon...</p>
+  <ul class="post-list">
+    {
+      posts.map((post) => (
+        <li>
+          <a href={`/blog/${post.slug}/`}>
+            <span class="title">{post.data.title}</span>
+            <span class="muted date">
+              {post.data.pubDate.toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "short",
+                day: "numeric",
+              })}
+            </span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
 </BaseLayout>
+
+<style>
+  .post-list {
+    list-style: none;
+    padding: 0;
+  }
+  .post-list li {
+    margin-bottom: 0.75rem;
+  }
+  .post-list a {
+    display: flex;
+    justify-content: space-between;
+    text-decoration: none;
+    gap: 1rem;
+  }
+  .post-list a:hover .title {
+    text-decoration: underline;
+  }
+  .date {
+    flex-shrink: 0;
+  }
+</style>
