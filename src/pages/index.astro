@@ -1,16 +1,27 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<p>Merhaba, Ben Çağatay Sunal! Python ile Backend geliştiriyorum.</p>
-	</body>
-</html>
+<BaseLayout title="Çağatay Sunal">
+  <h1>Çağatay Sunal</h1>
+  <p class="muted">Backend Developer · Linux enthusiast</p>
+
+  <div class="card">
+    <p>
+      <strong>Now</strong>: Building this site deliberately. Content will land
+      soon.
+    </p>
+    <p class="muted">
+      I care about clarity, correctness, and practical engineering.
+    </p>
+  </div>
+
+  <h2>Featured</h2>
+  <div class="card">
+    <p><strong>secure_payroll</strong> — HR/payroll tracking</p>
+    <p class="muted">FastAPI</p>
+  </div>
+
+  <h2>Notes</h2>
+  <p class="muted">Content is WIP</p>
+</BaseLayout>

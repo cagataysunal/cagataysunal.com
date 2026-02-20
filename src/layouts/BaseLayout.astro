@@ -1,0 +1,131 @@
+---
+const { title = "Çağatay Sunal", description = "Backend Developer" } =
+  Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <style>
+      :root {
+        color-scheme: dark;
+      }
+      body {
+        margin: 0;
+        font-family:
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          Segoe UI,
+          Roboto,
+          Ubuntu,
+          Cantarell,
+          Noto Sans,
+          Arial;
+        background: #0b0d10;
+        color: #e7e9ee;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      .wrap {
+        max-width: 780px;
+        margin: 0 auto;
+        padding: 32px 18px;
+      }
+      header {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 16px;
+        padding-bottom: 18px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        margin-bottom: 24px;
+      }
+      nav {
+        display: flex;
+        gap: 14px;
+        font-size: 14px;
+        opacity: 0.9;
+      }
+      main {
+        line-height: 1.65;
+      }
+      h1 {
+        font-size: 34px;
+        margin: 0 0 10px;
+        letter-spacing: -0.02em;
+      }
+      h2 {
+        font-size: 18px;
+        margin: 28px 0 10px;
+      }
+      p {
+        margin: 10px 0;
+        opacity: 0.92;
+      }
+      .muted {
+        opacity: 0.7;
+      }
+      .card {
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 14px;
+        padding: 16px;
+        margin: 12px 0;
+        background: rgba(255, 255, 255, 0.02);
+      }
+      footer {
+        margin-top: 36px;
+        padding-top: 18px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        font-size: 14px;
+        opacity: 0.8;
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      code {
+        font-family:
+          ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+          "Liberation Mono", monospace;
+        font-size: 0.95em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <a href="/" aria-label="Home"><strong>cs</strong></a>
+        <nav>
+          <a href="/about">about</a>
+          <a href="/projects">projects</a>
+          <a href="/blog">blog</a>
+        </nav>
+      </header>
+
+      <main>
+        <slot />
+      </main>
+
+      <footer>
+        <span class="muted">© {new Date().getFullYear()} Çağatay Sunal</span>
+        <span>
+          <a href="https://linkedin.com/in/cagataysunal">LinkedIn</a>
+          <span class="muted"> · </span>
+          <a href="https://github.com/cagataysunal">GitHub</a>
+          <span class="muted"> · </span>
+          <a href="mailto:cagataysunal@pm.me">Email</a>
+        </span>
+      </footer>
+    </div>
+  </body>
+</html>
